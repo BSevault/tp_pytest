@@ -1,0 +1,32 @@
+name: CI pipeline
+
+on: [push, pull_request]
+
+jobs:
+  run-shell-commands:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install pytest pytest-cov
+
+      - name: Run unit tests
+        run: |
+          pytest --cov-report term-missing --cov
+
+      - name: Display coverage percentage
+        run: |
+          coverage report | grep TOTAL
