@@ -7,12 +7,12 @@ pipeline {
                 checkout scm
             }
         }
-        // stage('Set up Python') {
-        //     steps {
-        //         // Installe la version de Python spécifiée
-        //         sh 'apt install -y python3'
-        //     }
-        // }
+        stage('Set up Python') {
+            steps {
+                // Installe la version de Python spécifiée
+                sh 'apt install -y python3'
+            }
+        }
         stage('Install dependencies') {
             steps {
                 // Installe les dépendances Python
