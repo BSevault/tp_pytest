@@ -1,8 +1,5 @@
 pipeline {
-    agent {
-        // Utilise un agent basé sur un container Ubuntu
-        label 'ubuntu'
-    }
+    agent any
     stages {
         stage('Checkout repository') {
             steps {
