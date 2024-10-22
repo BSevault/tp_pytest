@@ -10,7 +10,7 @@ pipeline {
         stage('Set up Python') {
             steps {
                 // Installe la version de Python spécifiée
-                sh 'sudo apt-get update && sudo apt-get install -y python3'
+                sh 'apt-get update && apt-get install -y python3'
             }
         }
         stage('Install dependencies') {
